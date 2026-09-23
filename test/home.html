@@ -1,0 +1,23 @@
+<iframe
+  id="menuFrame"
+  src="menu.html"
+  title="Menu">
+</iframe>
+
+<iframe
+  id="contentFrame"
+  name="contentFrame"
+  src="home.html"
+  title="Content">
+</iframe>
+
+<script>
+  window.addEventListener("message", (event) => {
+    // Use your actual origin here in production
+    if (event.origin !== window.location.origin) return;
+
+    if (event.data.type === "navigate") {
+      document.getElementById("contentFrame").src = event.data.url;
+    }
+  });
+</script>

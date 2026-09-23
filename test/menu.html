@@ -1,0 +1,27 @@
+<ul>
+  <li>
+    <a href="about.html" class="page-link">About</a>
+  </li>
+  <li>
+    <a href="contact.html" class="page-link">Contact</a>
+  </li>
+  <li>
+    <a href="products.html" class="page-link">Products</a>
+  </li>
+</ul>
+
+<script>
+  document.querySelectorAll(".page-link").forEach((link) => {
+    link.addEventListener("click", (event) => {
+      event.preventDefault();
+
+      window.parent.postMessage(
+        {
+          type: "navigate",
+          url: link.getAttribute("href")
+        },
+        window.location.origin
+      );
+    });
+  });
+</script>
